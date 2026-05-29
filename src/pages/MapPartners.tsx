@@ -157,7 +157,7 @@ export default function MapPartners() {
         )}
 
         {/* Sidebar / Mobile Bottom Sheet Filters Header */}
-        <div className={`find-sidebar ${!isDesktop ? (!searchTerm && !activePartner ? 'mobile-sheet-hidden' : (isMobileListOpen ? 'mobile-sheet-open' : 'mobile-sheet-closed')) : ''} ${(!isDesktop && activePartner && !isMobileListOpen) ? 'has-active-partner' : ''}`} style={isDesktop ? { background: 'var(--black)', borderRight: '1px solid rgba(255,255,255,0.05)' } : {}}>
+        <div className={`find-sidebar ${!isDesktop ? (isMobileListOpen ? 'mobile-sheet-open' : 'mobile-sheet-closed') : ''} ${(!isDesktop && activePartner && !isMobileListOpen) ? 'has-active-partner' : ''}`} style={isDesktop ? { background: 'var(--black)', borderRight: '1px solid rgba(255,255,255,0.05)' } : {}}>
           {isDesktop && (
             <div className="px-8 pt-8 pb-4">
               <button onClick={() => navigate('/')} className="find-exit-button mb-8" style={{ color: 'var(--sand)', opacity: 0.7 }}>
@@ -212,14 +212,22 @@ export default function MapPartners() {
             {!isDesktop && (
               <div className="mobile-sheet-handle-area" onClick={() => setIsMobileListOpen(!isMobileListOpen)}>
                 <div className="mobile-sheet-handle"></div>
+                {isMobileListOpen && (
+                  <div className="px-4 pb-3 pt-1 flex justify-between items-center text-[11px] uppercase tracking-wider font-bold w-full" style={{ color: 'var(--clay)' }}>
+                    <span>{filteredData.length} parceiros encontrados</span>
+                    <span style={{ color: 'rgba(255,255,255,0.4)' }}>Recolher</span>
+                  </div>
+                )}
                 {!isMobileListOpen && activePartner && (
-                  <div className="px-4 py-2 text-center text-[11px] uppercase tracking-wider font-bold" style={{ color: 'var(--clay)' }}>
-                    Tocar para expandir lista
+                  <div className="px-4 pb-3 pt-1 flex justify-between items-center text-[11px] uppercase tracking-wider font-bold w-full" style={{ color: 'var(--clay)' }}>
+                    <span>{filteredData.length} parceiros</span>
+                    <span style={{ color: 'var(--sand)' }}>Tocar para lista</span>
                   </div>
                 )}
                 {!activePartner && !isMobileListOpen && (
-                   <div className="px-4 py-2 text-center text-[11px] uppercase tracking-wider font-bold" style={{ color: 'var(--clay)' }}>
-                     Tocar para expandir lista
+                   <div className="px-4 pb-3 pt-1 flex justify-between items-center text-[11px] uppercase tracking-wider font-bold w-full" style={{ color: 'var(--clay)' }}>
+                     <span>{filteredData.length} parceiros</span>
+                     <span style={{ color: 'var(--sand)' }}>Ver lista completa</span>
                    </div>
                 )}
               </div>
@@ -333,42 +341,37 @@ const PartnerCard: React.FC<{ partner: Partner, isActive: boolean, onClick: () =
   return (
     <div 
       onClick={onClick} 
-      className={`group cursor-pointer overflow-hidden transition-all`}
+      className={`group cursor-pointer shrink-0 overflow-hidden transition-all flex flex-row items-center gap-3 p-3`}
       style={{
-        borderRadius: '8px',
-        border: isActive ? '1px solid var(--clay)' : '1px solid rgba(255,255,255,0.05)',
-        background: isActive ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.02)'
+        minHeight: '112px',
+        borderRadius: '14px',
+        border: isActive ? '1px solid var(--clay)' : '1px solid rgba(244, 239, 230, 0.14)',
+        background: isActive ? 'rgba(255,255,255,0.05)' : 'rgba(244, 239, 230, 0.035)'
       }}
     >
-      <div className="flex h-[150px]">
-        <div className="w-[120px] shrink-0 relative bg-[#111]">
-          <SafePartnerImage partner={partner} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-          {partner.featured && (
-            <span className="absolute top-2 left-2 text-[#000] text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded" style={{ background: 'var(--clay)' }}>Destaque</span>
-          )}
-        </div>
-        <div className="flex-1 p-4 flex flex-col min-w-0 justify-between">
-          <div>
-            <div className="flex items-center gap-1.5 mb-2" style={{ color: 'var(--clay)' }}>
-              {getIcon()}
-              <span className="text-[10px] uppercase font-bold tracking-wider">{getLabel()}</span>
-            </div>
-            <h3 className="display truncate mb-1" style={{ fontSize: '18px', color: 'var(--sand)' }}>{partner.publicName}</h3>
-            <p className="body-p truncate mb-1" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)' }}>{partner.neighborhood} · {partner.city}</p>
+      <div className="w-[88px] h-[88px] shrink-0 relative bg-[#15110d] rounded-[10px] overflow-hidden">
+        <SafePartnerImage partner={partner} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+        {partner.featured && (
+          <span className="absolute top-1 left-1 text-[#000] text-[8px] uppercase font-bold tracking-wider px-1 py-0.5 rounded" style={{ background: 'var(--clay)' }}>Destaque</span>
+        )}
+      </div>
+      <div className="flex-1 min-w-0 flex flex-col justify-center py-1">
+          <div className="flex items-center gap-1.5 mb-1" style={{ color: 'var(--clay)' }}>
+             <span className="text-[10px] uppercase font-bold tracking-wider" style={{ letterSpacing: '0.12em' }}>{getLabel()}</span>
           </div>
-          
-          <div className="flex items-center justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '12px' }}>
-            <span style={{ fontSize: '11px', color: 'var(--sub)', display: 'flex', alignItems: 'center', gap: '4px' }}><Clock size={12} /> Aberto</span>
-            <div className="flex gap-2">
-              <Link to={`/parceiros/${partner.slug}`} onClick={(e) => e.stopPropagation()} className="p-2 rounded-full hover:bg-white/10 transition-colors" style={{ color: 'var(--sand)' }} title="Detalhes">
-                <Info size={16} />
-              </Link>
-              <button onClick={onRoute} className="flex items-center gap-1.5 px-4 py-2 rounded-[40px] transition-colors text-[11px] font-bold uppercase tracking-wider" style={{ background: 'var(--sand)', color: 'var(--black)' }} title="Ver rota">
-                <Navigation size={12} /> <span>Rota</span>
-              </button>
-            </div>
+          <h3 className="m-0" style={{ fontSize: '15px', color: '#f4efe6', fontWeight: 800, textTransform: 'uppercase', lineHeight: 1.1, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{partner.publicName}</h3>
+          <p className="mt-1 mb-0" style={{ fontSize: '12px', color: 'rgba(244, 239, 230, 0.62)', lineHeight: 1.35, whiteSpace: 'normal' }}>
+             {partner.neighborhood} · {partner.city}
+          </p>
+
+          <div className="flex gap-2 mt-2.5">
+             <button onClick={onRoute} className="flex items-center justify-center px-4 rounded-full transition-colors font-bold uppercase" style={{ background: 'var(--sand)', color: 'var(--black)', minHeight: '34px', fontSize: '10px', letterSpacing: '0.08em' }}>
+                Ver rota
+             </button>
+             <Link to={`/parceiros/${partner.slug}`} onClick={(e) => e.stopPropagation()} className="flex items-center justify-center px-4 rounded-full transition-colors font-bold uppercase" style={{ border: '1px solid rgba(244, 239, 230, 0.2)', color: 'var(--sand)', minHeight: '34px', fontSize: '10px', letterSpacing: '0.08em' }}>
+                Detalhes
+             </Link>
           </div>
-        </div>
       </div>
     </div>
   );

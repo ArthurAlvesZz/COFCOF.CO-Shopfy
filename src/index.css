@@ -561,7 +561,7 @@ body.map-mode {
   }
 
   .mobile-sheet-closed .find-results {
-    transform: translateY(calc(100% - 64px));
+    transform: translateY(calc(100% - 60px));
   }
 
   .mobile-sheet-closed.has-active-partner .find-results {
