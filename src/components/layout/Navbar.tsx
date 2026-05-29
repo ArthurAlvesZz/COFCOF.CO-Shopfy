@@ -46,7 +46,11 @@ export default function Navbar() {
             <Link to="/onde-nos-encontrar" className={getDesktopClass('/onde-nos-encontrar')} style={{ fontSize: '13px' }}>Onde Encontrar</Link>
             <Link to="/para-empresas" className={getDesktopClass('/para-empresas')} style={isB2BPage ? { fontSize: '13px', color: 'var(--sand)', borderBottom: '1px solid var(--sand)', paddingBottom: '4px' } : { fontSize: '13px' }}>Para Empresas</Link>
             <Link to="/contato" className={getDesktopClass('/contato')} style={{ fontSize: '13px' }}>Contato</Link>
-            <Link to="/assinaturas" className="nv-c" style={{ fontSize: '13px' }}>Comprar →</Link>
+            {location.pathname === '/cafes' ? (
+              <a href="#assinaturas" className="nv-c" style={{ fontSize: '13px' }} onClick={(e) => { e.preventDefault(); document.getElementById('assinatura')?.scrollIntoView({behavior: 'smooth'}) }}>Assinar Cafés</a>
+            ) : (
+              <Link to="/assinaturas" className="nv-c" style={{ fontSize: '13px' }}>Comprar →</Link>
+            )}
           </div>
           <button 
             className={`hb ${isMenuOpen ? 'o' : ''}`} 

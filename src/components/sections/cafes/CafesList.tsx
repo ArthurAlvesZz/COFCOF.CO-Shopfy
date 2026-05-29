@@ -167,142 +167,110 @@ const lots = [
 
 export default function CafesList() {
   return (
-    <>
-      {lots.map((lote) => (
-        <section key={lote.id} data-shopify-section={`cafe-${lote.id}`} className="cf fi" id={lote.id}>
-          <div className="bx">
-            <div className="cf-grid">
-              
-              <div className="cf-media">
-                <div className="cf-label">
-                  <div className="cf-label-wm">{lote.num}</div>
-                  <div className="cf-label-top">
-                    <div>
-                      <div className="eyebrow">Lote N° {lote.num}</div>
-                      <div className="label">Safra 25</div>
-                    </div>
-                    <div className="cf-label-top-r">
-                      <div className="eyebrow">SCA</div>
-                      <div className="cf-label-sca">{lote.sca}</div>
+    <section className="cafes-wrapper fi" style={{ paddingTop: 'clamp(60px, 10vh, 120px)', paddingBottom: 'clamp(60px, 10vh, 120px)' }}>
+      <div className="bx">
+        <div 
+          className="lotes-grid-carousel"
+          style={{
+            display: 'flex',
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            gap: '24px',
+            paddingBottom: '24px',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}
+        >
+          {lots.map((lote) => (
+            <div 
+              key={lote.id} 
+              data-shopify-section={`cafe-${lote.id}`} 
+              className="cf-card" 
+              id={lote.id}
+              style={{
+                scrollSnapAlign: 'start',
+                flexShrink: 0,
+                width: '100%',
+                borderTop: '1px solid var(--rule)',
+                paddingTop: '40px',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <div className="cf-grid-card" style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+                <div className="cf-media" style={{ background: '#111', padding: '32px', borderRadius: '8px', color: 'var(--sand)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
+                    <span className="label" style={{ color: 'var(--clay)' }}>Lote {lote.num}</span>
+                    <span className="label" style={{ padding: '6px 12px', background: 'var(--clay)', color: 'var(--black)', borderRadius: '4px' }}>{lote.sca} SCA</span>
+                  </div>
+                  
+                  <div style={{ padding: '40px 0', textAlign: 'center' }}>
+                    <div style={{ 
+                      width: '140px', height: '180px', margin: '0 auto', 
+                      background: 'linear-gradient(45deg, #1a1a1a, #2a2a2a)', 
+                      borderRadius: '8px', border: '1px solid #333',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                    }}>
+                      <span style={{ fontFamily: 'var(--fl)', fontSize: '48px', color: '#444', fontWeight: '800' }}>{lote.num}</span>
                     </div>
                   </div>
-                  <div className="cf-label-mid">
-                    <div className="cf-label-dash"></div>
-                    <div className="cf-label-name">{lote.producerHtml}</div>
-                    <div className="cf-label-var">{lote.varietyFull}</div>
-                    <div className="cf-label-origin">{lote.origin}</div>
+
+                  <div>
+                    <h3 style={{ fontFamily: 'var(--fl)', fontSize: '20px', fontWeight: '800', marginBottom: '8px', textTransform: 'uppercase' }}>{lote.producerHtml}</h3>
+                    <div style={{ fontSize: '12px', color: 'rgba(246, 241, 235, 0.6)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                      {lote.origin} • {lote.year}
+                    </div>
                   </div>
                 </div>
-                
-                <div className="cf-vid">
-                  <div className="cf-vid-bg"></div>
-                  <div className="cf-vid-grain"></div>
-                  <div className="cf-vid-tag">Entrevista com produtor</div>
-                  <div className="cf-vid-play">
-                    <Play size={14} className="ml-0.5 fill-current" />
+
+                <div className="cf-info" style={{ paddingTop: '0' }}>
+                  <div className="eyebrow" style={{ color: 'var(--sub)' }}>Produtor premiado</div>
+                  <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', marginTop: '8px', marginBottom: '16px' }}>{lote.producerHtml}</h2>
+                  <p className="body-p" style={{ marginBottom: '32px' }}>{lote.desc}</p>
+                  
+                  <div className="cf-pills" style={{ marginBottom: '24px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {lote.pills.map((p, i) => <span key={i} className="cf-pill" style={{ fontSize: '11px', padding: '6px 12px' }}>{p}</span>)}
+                  </div>
+
+                  <details className="cf-tech-details" style={{ marginBottom: '32px', borderTop: '1px solid var(--rule)', borderBottom: '1px solid var(--rule)' }}>
+                    <summary style={{ padding: '16px 0', cursor: 'pointer', fontFamily: 'var(--fl)', fontWeight: '700', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                      Ver ficha técnica completa
+                    </summary>
+                    <div className="cf-specs" style={{ paddingBottom: '16px', margin: 0, gap: '16px 32px' }}>
+                      <div className="cf-spec"><div className="eyebrow" style={{ marginBottom: '4px' }}>Variedade</div><div className="label" style={{ fontSize: '13px' }}>{lote.variety}</div></div>
+                      <div className="cf-spec"><div className="eyebrow" style={{ marginBottom: '4px' }}>Processo</div><div className="label" style={{ fontSize: '13px' }}>{lote.process}</div></div>
+                      <div className="cf-spec"><div className="eyebrow" style={{ marginBottom: '4px' }}>Torra</div><div className="label" style={{ fontSize: '13px' }}>{lote.roast}</div></div>
+                      <div className="cf-spec"><div className="eyebrow" style={{ marginBottom: '4px' }}>Fazenda</div><div className="label" style={{ fontSize: '13px' }}>{lote.farm}</div></div>
+                      <div className="cf-spec"><div className="eyebrow" style={{ marginBottom: '4px' }}>Altitude</div><div className="label" style={{ fontSize: '13px' }}>{lote.alt}</div></div>
+                      <div className="cf-spec"><div className="eyebrow" style={{ marginBottom: '4px' }}>Safra</div><div className="label" style={{ fontSize: '13px' }}>{lote.year}</div></div>
+                    </div>
+                  </details>
+                  
+                  <div className="cf-cta" style={{ marginTop: '0', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                    <Link to="/cafes" className="btn btn-ds" style={{ padding: '16px 24px', fontSize: '11px', flex: '1 1 auto', textAlign: 'center', justifyContent: 'center' }}><span>Comprar 200g</span></Link>
+                    <Link to="/assinaturas" className="btn btn-sd" style={{ padding: '16px 24px', fontSize: '11px', flex: '1 1 auto', textAlign: 'center', justifyContent: 'center' }}><span>Assinar</span></Link>
                   </div>
                 </div>
               </div>
-
-              <div className="cf-info">
-                <div className="eyebrow">Produtor premiado · COE</div>
-                <h2 className="display">{lote.producerHtml}</h2>
-                <p className="body-p">{lote.desc}</p>
-                
-                <div className="cf-specs">
-                  <div className="cf-spec">
-                    <div className="eyebrow">Variedade</div>
-                    <div className="label">{lote.variety}</div>
-                  </div>
-                  <div className="cf-spec">
-                    <div className="eyebrow">Processo</div>
-                    <div className="label">{lote.process}</div>
-                  </div>
-                  <div className="cf-spec">
-                    <div className="eyebrow">Torra</div>
-                    <div className="label">{lote.roast}</div>
-                  </div>
-                  <div className="cf-spec">
-                    <div className="eyebrow">Fazenda</div>
-                    <div className="label">{lote.farm}</div>
-                  </div>
-                  <div className="cf-spec">
-                    <div className="eyebrow">Altitude</div>
-                    <div className="label">{lote.alt}</div>
-                  </div>
-                  <div className="cf-spec">
-                    <div className="eyebrow">Safra</div>
-                    <div className="label">{lote.year}</div>
-                  </div>
-                </div>
-                
-                <a href={lote.traceLink} rel="noopener noreferrer" className="cf-trace">
-                  <div className="cf-trace-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2v20M2 12h20" opacity="0.3"/>
-                      <circle cx="12" cy="12" r="6"/>
-                    </svg>
-                  </div>
-                  <div className="cf-trace-txt">
-                    <div className="eyebrow cf-trace-t">Rastreabilidade · Cerrado Mineiro D.O.</div>
-                    <div className="cf-trace-v">Rastreie até a fazenda de origem</div>
-                  </div>
-                  <span className="cf-trace-arrow">→</span>
-                </a>
-                
-                <div className="cf-notes">
-                  <div className="eyebrow">Notas sensoriais</div>
-                  <p>{lote.notesDesc}</p>
-                </div>
-                
-                <div className="cf-pills">
-                  {lote.pills.map((p, i) => <span key={i} className="cf-pill">{p}</span>)}
-                </div>
-                
-                <div className="cf-profile">
-                  <div className="eyebrow">Perfil sensorial</div>
-                  <div className="cf-bars">
-                    
-                    <div className="fi v">
-                      <div className="cf-bar-head"><span className="label">Doçura</span><span className="label v">{lote.profile.sweet}/100</span></div>
-                      <div className="cf-bar-track">
-                        <div className="cf-bar-fill" style={{ '--w': lote.profile.sweet / 100 } as React.CSSProperties}></div>
-                      </div>
-                    </div>
-                    
-                    <div className="fi v">
-                      <div className="cf-bar-head"><span className="label">Acidez</span><span className="label v">{lote.profile.acid}/100</span></div>
-                      <div className="cf-bar-track">
-                        <div className="cf-bar-fill" style={{ '--w': lote.profile.acid / 100 } as React.CSSProperties}></div>
-                      </div>
-                    </div>
-                    
-                    <div className="fi v">
-                      <div className="cf-bar-head"><span className="label">Corpo</span><span className="label v">{lote.profile.body}/100</span></div>
-                      <div className="cf-bar-track">
-                        <div className="cf-bar-fill" style={{ '--w': lote.profile.body / 100 } as React.CSSProperties}></div>
-                      </div>
-                    </div>
-                    
-                    <div className="fi v">
-                      <div className="cf-bar-head"><span className="label">Aroma</span><span className="label v">{lote.profile.aroma}/100</span></div>
-                      <div className="cf-bar-track">
-                        <div className="cf-bar-fill" style={{ '--w': lote.profile.aroma / 100 } as React.CSSProperties}></div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                
-                <div className="cf-cta">
-                  <Link to="/assinaturas#planos" className="btn btn-ds"><span>Assinar e receber →</span></Link>
-                </div>
-              </div>
-
             </div>
-          </div>
-        </section>
-      ))}
-    </>
+          ))}
+        </div>
+      </div>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media(min-width: 768px) {
+          .lotes-grid-carousel {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            grid-auto-rows: auto;
+            gap: 40px !important;
+            overflow: visible !important;
+          }
+          .cf-card {
+            width: auto !important;
+            scroll-snap-align: none !important;
+          }
+        }
+      `}} />
+    </section>
   );
 }

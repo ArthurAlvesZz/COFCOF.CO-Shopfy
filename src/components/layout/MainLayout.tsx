@@ -37,13 +37,15 @@ export default function MainLayout() {
     return () => observer.disconnect();
   }, [pathname]);
 
+  const isMapRoute = pathname === '/onde-nos-encontrar';
+
   return (
-    <div ref={aeRef} className="ae">
-      <Navbar />
+    <div ref={aeRef} className={`ae ${isMapRoute ? 'map-mode' : ''}`}>
+      {!isMapRoute && <Navbar />}
       <main className="flex-grow">
         <Outlet />
       </main>
-      <Footer />
+      {!isMapRoute && <Footer />}
     </div>
   );
 }

@@ -364,3 +364,237 @@
   text-transform: uppercase;
   color: var(--clay);
 }
+
+/* --- Sachets Section --- */
+.cofcof-sachets-section {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(72px, 9vw, 140px) clamp(18px, 5vw, 72px);
+  background: #f4efe6;
+  color: #080705;
+}
+
+.cofcof-sachets-content {
+  max-width: 520px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a6238;
+}
+
+.cofcof-sachets-content h2 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.cofcof-sachets-content p {
+  margin: 22px 0 0;
+  color: rgba(8, 7, 5, 0.72);
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.65;
+}
+
+.sachets-benefits {
+  display: grid;
+  gap: 10px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sachets-benefits li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+  color: rgba(8, 7, 5, 0.78);
+}
+
+.sachets-benefits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #5a3824;
+}
+
+.sachets-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.sachets-actions a,
+.sachets-actions button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border-radius: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sachets-actions .btn-primary {
+  background: #080705;
+  color: #f4efe6;
+}
+
+.sachets-actions .btn-secondary {
+  border: 1px solid rgba(8, 7, 5, 0.22);
+  color: #080705;
+}
+
+.cofcof-sachets-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 1200px) {
+  .cofcof-sachets-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.sachet-card {
+  position: relative;
+  min-height: 440px;
+  padding: 18px;
+  background: #0b0907;
+  color: #f4efe6;
+  border: 1px solid rgba(8, 7, 5, 0.1);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.sachet-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  padding: 7px 10px;
+  border: 1px solid rgba(244, 239, 230, 0.18);
+  background: rgba(8, 7, 5, 0.52);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sachet-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.38));
+}
+
+.sachet-card h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-family: var(--fl);
+}
+
+.sachet-card p {
+  margin: 10px 0 0;
+  color: rgba(244, 239, 230, 0.72);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sachet-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 16px;
+}
+
+.sachet-notes span {
+  padding: 6px 8px;
+  border: 1px solid rgba(244, 239, 230, 0.14);
+  color: rgba(244, 239, 230, 0.72);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sachet-card a,
+.sachet-card button {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: #f4efe6;
+  color: #080705;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+@media (max-width: 900px) {
+  .cofcof-sachets-section {
+    grid-template-columns: 1fr;
+    padding: 64px 16px;
+  }
+
+  .cofcof-sachets-content h2 {
+    font-size: clamp(38px, 12vw, 54px);
+  }
+
+  .cofcof-sachets-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 14px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    margin-right: -16px; /* Bleed */
+    padding-right: 16px;
+  }
+  .cofcof-sachets-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sachet-card {
+    flex: 0 0 82vw;
+    max-width: 340px;
+    scroll-snap-align: start;
+  }
+
+  .sachets-actions {
+    flex-direction: column;
+  }
+
+  .sachets-actions a {
+    width: 100%;
+  }
+}

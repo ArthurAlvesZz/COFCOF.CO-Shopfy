@@ -14,9 +14,9 @@ export default function SubscriptionDossier() {
   return (
     <section data-shopify-section="subscription-dossier" className="sec sec-p fi">
       <div className="bx">
-        <div className="eyebrow">Dossiê — Ficha de degustação</div>
-        <h2 className="display" style={{ fontSize: 'clamp(1.8rem,4.5vw,3.2rem)', color: 'var(--black)', marginTop: '20px', maxWidth: '900px' }}>O que você está<br /><span className="ital">provando</span>.</h2>
-        <p className="body-p" style={{ fontSize: '14px', color: 'var(--sub)', marginTop: '20px', maxWidth: '520px' }}>Cada lote passa por prova às cegas com Q-Graders certificados. Um exemplo real — Wagner Crivelenti Ferrero, lote de abertura da edição.</p>
+        <div className="eyebrow" style={{ color: 'var(--clay)' }}>Ficha de degustação</div>
+        <h2 className="display" style={{ fontSize: 'clamp(2rem,5vw,4rem)', color: 'var(--black)', marginTop: '20px', maxWidth: '900px' }}>O que você está provando<br />quando assina <span className="ital">CofCof</span>.</h2>
+        <p className="body-p" style={{ fontSize: '18px', color: 'rgba(10,10,10,0.7)', marginTop: '20px', maxWidth: '640px' }}>Cada envio carrega um lote real, com produtor, pontuação, processo e perfil sensorial identificados.</p>
         <div className="ts">
           <div className="ts-card fi">
             <div className="ts-card-head">
@@ -27,35 +27,38 @@ export default function SubscriptionDossier() {
               </div>
             </div>
             <div className="ts-name">Wagner Crivelenti<br />Ferrero</div>
-            <div className="ts-meta">
-              <div>
-                <div className="eyebrow">Variedade</div>
-                <div className="label">Paraíso MG H 419-1</div>
-              </div>
-              <div>
-                <div className="eyebrow">Processo</div>
-                <div className="label">Natural</div>
-              </div>
-              <div>
-                <div className="eyebrow">Altitude</div>
-                <div className="label">1180m</div>
-              </div>
-              <div>
-                <div className="eyebrow">Fazenda</div>
-                <div className="label">Fazenda Pinheiro</div>
-              </div>
-              <div>
-                <div className="eyebrow">Origem</div>
-                <div className="label">Patrocínio · MG</div>
-              </div>
-              <div>
-                <div className="eyebrow">Safra</div>
-                <div className="label">2025</div>
-              </div>
+            <div className="ts-notes" style={{ borderBottom: '1px solid var(--rule)', paddingBottom: '24px', marginBottom: '24px' }}>
+              <div className="eyebrow" style={{ color: 'var(--clay)' }}>Na xícara</div>
+              <p className="body-p" style={{ fontSize: '18px', marginTop: '12px' }}>Doçura alta, corpo marcante, notas de chocolate e caramelo, final limpo e aveludado. Um café confortável e surpreendente ao mesmo tempo.</p>
             </div>
-            <div className="ts-notes">
-              <div className="eyebrow">Notas sensoriais</div>
-              <p className="body-p" style={{ fontSize: '15px' }}>Floral · Mel · Mascavo · Final doce e limpo</p>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: '16px' }}>Para quem gosta de detalhes:</div>
+              <div className="ts-meta" style={{ gap: '16px' }}>
+                <div>
+                  <div className="eyebrow">Variedade</div>
+                  <div className="label">Paraíso MG H 419-1</div>
+                </div>
+                <div>
+                  <div className="eyebrow">Processo</div>
+                  <div className="label">Natural</div>
+                </div>
+                <div>
+                  <div className="eyebrow">Altitude</div>
+                  <div className="label">1180m</div>
+                </div>
+                <div>
+                  <div className="eyebrow">Fazenda</div>
+                  <div className="label">Fazenda Pinheiro</div>
+                </div>
+                <div>
+                  <div className="eyebrow">Origem</div>
+                  <div className="label">Patrocínio · MG</div>
+                </div>
+                <div>
+                  <div className="eyebrow">Torra</div>
+                  <div className="label">Sob demanda</div>
+                </div>
+              </div>
             </div>
           </div>
           <div>
@@ -93,7 +96,7 @@ export default function SubscriptionDossier() {
               </div>
             </div>
             <div className="ts-cite"><p>Avaliação conforme <span className="label">Specialty Coffee Association (SCA) · Cup of Excellence · Q-Grader ref. AB217</span></p></div>
-            <a href="#planos" onClick={(e) => handleScroll(e, 'planos')} className="btn btn-ds" style={{ marginTop: '32px', fontSize: '11px', padding: '16px 28px', letterSpacing: '.22em' }}><span>Provar esse café →</span></a>
+            <a href="#planos" onClick={(e) => handleScroll(e, 'planos')} className="btn btn-ds" style={{ marginTop: '32px', fontSize: '13px', padding: '18px 36px' }}><span>Receber cafés assim na assinatura</span></a>
           </div>
         </div>
       </div>

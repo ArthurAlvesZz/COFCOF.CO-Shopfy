@@ -15,10 +15,11 @@ export default function SubscriptionCTA() {
     <section data-shopify-section="subscription-cta" id="assinar" className="cta fi">
       <div className="cta-grain"></div>
       <div className="bx cta-in">
-        <div className="eyebrow">Última chamada</div>
-        <h2 className="display">Cada dia sem assinar<br />é um dia de café <span className="ital">ruim</span>.</h2>
-        <a href="#planos" onClick={(e) => handleScroll(e, 'planos')} className="btn btn-ds"><span>Começar assinatura →</span></a>
-        <p className="cta-disc">Cancele quando quiser · Pause a qualquer momento · Garantia legal de 7 dias</p>
+        <div className="eyebrow" style={{ color: 'var(--clay)' }}>Conclusão</div>
+        <h2 className="display">Não aceite menos<br />que o <span className="ital">melhor</span>.</h2>
+        <p className="body-p" style={{ maxWidth: '400px', margin: '24px auto', fontSize: '18px', color: 'rgba(246, 241, 235, 0.72)' }}>O seu ritual merece curadoria, origem e frescor. Assine agora e mude a forma como você bebe café.</p>
+        <a href="#planos" onClick={(e) => handleScroll(e, 'planos')} className="btn btn-ds"><span>Escolher meu plano →</span></a>
+        <p className="cta-disc">Sem fidelidade · Pause quando quiser · Envio rápido</p>
       </div>
     </section>
   );

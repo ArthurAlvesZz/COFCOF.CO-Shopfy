@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import MainLayout from './components/layout/MainLayout';
+import WhatsAppLead from './components/WhatsAppLead';
 import Home from './pages/Home';
 import B2B from './pages/B2B';
 import Origin from './pages/Origin';
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
+      <WhatsAppLead />
     </BrowserRouter>
   );
 }

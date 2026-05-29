@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import CafesHero from '../components/sections/cafes/CafesHero';
 import CafesTicker from '../components/sections/cafes/CafesTicker';
 import CafesIndex from '../components/sections/cafes/CafesIndex';
+import CafesEducational from '../components/sections/cafes/CafesEducational';
 import CafesList from '../components/sections/cafes/CafesList';
+import CafesSubscriptionBanner from '../components/sections/cafes/CafesSubscriptionBanner';
+import { HomeSachetsGateway } from '../components/sections/home/PlansAndQuiz';
+import CafesFAQ from '../components/sections/cafes/CafesFAQ';
 import CafesCTA from '../components/sections/cafes/CafesCTA';
 
 export default function Cafes() {
@@ -32,7 +36,11 @@ export default function Cafes() {
       <CafesHero />
       <CafesTicker />
       <CafesIndex />
+      <CafesEducational />
       <CafesList />
+      <CafesSubscriptionBanner />
+      <HomeSachetsGateway />
+      <CafesFAQ />
       <CafesCTA />
     </>
   );

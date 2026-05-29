@@ -112,3 +112,56 @@
   background-color: var(--rule-w) !important; 
   color: var(--clay) !important; 
 }
+
+/* Origin Hero Mobile Fixes */
+.origin-hero-layout {
+  flex-direction: column;
+}
+
+.origin-hero-text {
+  text-align: center;
+}
+
+.origin-hero-text .eyebrow {
+  justify-content: center;
+}
+
+.origin-hero-pill {
+  display: inline-block;
+  border: 1px solid rgba(201,162,99,0.3);
+  color: var(--clay);
+  padding: 6px 16px;
+  border-radius: 40px;
+  background-color: rgba(201,162,99,0.05);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.origin-hero-badges {
+  justify-content: center;
+}
+
+.pg-hero-cta {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media(min-width: 1024px) {
+  .origin-hero-layout {
+    flex-direction: row;
+  }
+  .origin-hero-text {
+    text-align: left;
+  }
+  .origin-hero-text .eyebrow {
+    justify-content: flex-start;
+  }
+  .origin-hero-badges {
+    justify-content: flex-start;
+  }
+  .pg-hero-cta {
+    justify-content: flex-start;
+  }
+}

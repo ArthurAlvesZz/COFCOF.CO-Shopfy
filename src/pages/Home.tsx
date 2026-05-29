@@ -1,15 +1,9 @@
 import React, { useEffect } from 'react';
-import HomeHero from '../components/sections/home/HomeHero';
-import HomeMarquee from '../components/sections/home/HomeMarquee';
-import HomeCertifications from '../components/sections/home/HomeCertifications';
-import HomeKit from '../components/sections/home/HomeKit';
-import HomeFeatured from '../components/sections/home/HomeFeatured';
-import HomeCompare from '../components/sections/home/HomeCompare';
-import HomeReviews from '../components/sections/home/HomeReviews';
-import HomeOrigin from '../components/sections/home/HomeOrigin';
-import HomeClub from '../components/sections/home/HomeClub';
-import HomeB2B from '../components/sections/home/HomeB2B';
-import HomeCTA from '../components/sections/home/HomeCTA';
+import { HomeHeroSubscription, HomeTrustBar, HomeHowItWorks } from '../components/sections/home/HeroAndTrust';
+import { HomePlans, HomeQuiz, HomeSachetsGateway } from '../components/sections/home/PlansAndQuiz';
+import { HomeReels } from '../components/sections/home/HomeReels';
+import { HomeOriginProof, HomeProcess, HomeComparison } from '../components/sections/home/OriginAndProcess';
+import { HomeSecondarySales, HomePerceptions, HomeFAQ, HomeFinalCTA } from '../components/sections/home/SecondaryAndReviews';
 
 export default function Home() {
   useEffect(() => {
@@ -35,30 +29,20 @@ export default function Home() {
 
   return (
     <>
-      <HomeHero />
-      <HomeMarquee />
-      <HomeCertifications />
-      
-      <div className="bx" style={{ textAlign: 'center', padding: '40px 0' }}>
-        <p className="label" style={{ color: 'var(--sub)' }}>Menos amargor · Mais doçura natural · Grão ou moído · Guia de preparo</p>
-      </div>
-      
-      <HomeKit />
-      
-      <div className="bx" style={{ textAlign: 'center', padding: '64px 0 32px' }}>
-        <p className="ital" style={{ fontSize: '24px' }}>Agora que você entende seu perfil, escolha o lote.</p>
-      </div>
-
-      <HomeFeatured />
-      <HomeCompare />
-      
-      <HomeMarquee />
-
-      <HomeReviews />
-      <HomeOrigin />
-      <HomeClub />
-      <HomeB2B />
-      <HomeCTA />
+      <HomeHeroSubscription />
+      <HomeTrustBar />
+      <HomeHowItWorks />
+      <HomePlans />
+      <HomeQuiz />
+      <HomeSachetsGateway />
+      <HomeReels />
+      <HomeOriginProof />
+      <HomeProcess />
+      <HomeComparison />
+      <HomeSecondarySales />
+      <HomePerceptions />
+      <HomeFAQ />
+      <HomeFinalCTA />
     </>
   );
 }
